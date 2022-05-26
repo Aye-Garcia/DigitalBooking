@@ -1,0 +1,828 @@
+{
+	"info": {
+		"_postman_id": "804f0994-fcec-47e9-a93a-a6cb8f7d89b0",
+		"name": "ProyectoIntegradorGrupo2",
+		"description": "Esta colección contiene los test pertinentes de realizar para probar el funcionamiento de las APIs del proyecto integrador.\n\nLa colección contiene subcarpetas que corresponden al testing de cada API de la aplicación. Y dentro de cada subcarpeta se encuentran los test de los métodos del endpoint.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18041092"
+	},
+	"item": [
+		{
+			"name": "Categorias Testing",
+			"item": [
+				{
+					"name": "Post - Agregar categoria",
+					"item": [
+						{
+							"name": "Agregar categoria",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Setear el ID de la categoria posteada\", () => {\r",
+											"    const jsonData = pm.response.json();\r",
+											"   pm.collectionVariables.set(\"IDPOST2_CATEGORIA\", jsonData);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"titulo\": \"{{POST_HOTELES_CATEGORIA}}\",\r\n        \"descripcion\": \"{{POST_DESCRIPCION}}\",\r\n        \"url_imagen\": \"https://images.unsplash.com/photo-1591088398332-8a7791972843?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374\"\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_CATEGORIAS}}/agregar",
+									"host": [
+										"{{URL_CATEGORIAS}}"
+									],
+									"path": [
+										"agregar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Agregar categoria script tests",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"console.log(jsonData)\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Content-Type header está presente\", () => {\r",
+											"  pm.response.to.have.header(\"Content-Type\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Content-Type header es application/json\", () => {\r",
+											"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Testear que el tipo de respuesta sea un string\", () => {\r",
+											"    \r",
+											"    pm.expect(jsonData).to.be.a(\"number\");\r",
+											"  \r",
+											"});\r",
+											"\r",
+											"pm.test(\"La respuesta es un status OK\", () => {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Setear el ID de la categoria posteada\", () => {\r",
+											"    \r",
+											"   pm.collectionVariables.set(\"IDPOST_CATEGORIA\", jsonData);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": " {\r\n        \"titulo\": \"{{POST_HOTELES_CATEGORIA}}\",\r\n        \"descripcion\": \"{{POST_DESCRIPCION}}\",\r\n        \"url_imagen\": \"https://images.unsplash.com/photo-1591088398332-8a7791972843?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374\"\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_CATEGORIAS}}/agregar",
+									"host": [
+										"{{URL_CATEGORIAS}}"
+									],
+									"path": [
+										"agregar"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get - Obtener categorias",
+					"item": [
+						{
+							"name": "Obtener todas las categorias",
+							"item": [
+								{
+									"name": "Peticion Get todas",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{URL_CATEGORIAS}}/todas",
+											"host": [
+												"{{URL_CATEGORIAS}}"
+											],
+											"path": [
+												"todas"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Peticion Get todas script tests",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"const responseJson = pm.response.json();\r",
+													"\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header está presente\", () => {\r",
+													"  pm.response.to.have.header(\"Content-Type\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header es application/json\", () => {\r",
+													"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Validar atributo id\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Validar atributo titulo\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"titulo\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Validar atributo descripcion\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"descripcion\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Validar atributo url_imagen\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"url_imagen\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Validar categoria Hoteles\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Hoteles\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Validar categoria Hostels\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Hostels\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Validar categoria Departamentos\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Departamentos\");\r",
+													"});\r",
+													"\r",
+													"\r",
+													"\r",
+													"pm.test(\"Validar categoria Bed & Breakfast\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Bed & Breakfast\");\r",
+													"});\r",
+													"\r",
+													"for (let i = 0; i < responseJson.length; i++) {\r",
+													"    pm.test(\"Validar atributo titulo\", function () {\r",
+													"    \r",
+													"    pm.expect(responseJson[pm.info.iteration].titulo).to.be.a('string');\r",
+													"  \r",
+													"});\r",
+													"}\r",
+													"\r",
+													"for (let i = 0; i < responseJson.length; i++) {\r",
+													"  \r",
+													"    pm.test(\"Validar atributo titulo como una de las cuatro categorias solicitadas\", function () {\r",
+													"    \r",
+													"    pm.expect(responseJson[pm.info.iteration].titulo).to.be.oneOf([\"Departamentos\", \"Hostels\", \"Hoteles\", \"Bed & Breakfast\"]);\r",
+													"});\r",
+													"}\r",
+													"\r",
+													"for (let i = 0; i < responseJson.length; i++) {\r",
+													"    pm.test(\"Validar atributo descripcion\", function () {\r",
+													"    \r",
+													"    pm.expect(responseJson[pm.info.iteration].descripcion).to.be.a('string');\r",
+													"  \r",
+													"});\r",
+													"}\r",
+													"\r",
+													"for (let i = 0; i < responseJson.length; i++) {\r",
+													"    pm.test(\"Validar atributo id\", function () {\r",
+													"    \r",
+													"    pm.expect(responseJson[pm.info.iteration].id).to.be.a('number');\r",
+													"  \r",
+													"});\r",
+													"}\r",
+													"\r",
+													"for (let i = 0; i < responseJson.length; i++) {\r",
+													"    pm.test(\"La url de la imagen es un string\", function () {\r",
+													"    \r",
+													"    pm.expect(responseJson[pm.info.iteration].url_imagen).to.be.a('string');\r",
+													"  \r",
+													"});\r",
+													"}\r",
+													"\r",
+													"for (let i = 0; i < responseJson.length; i++) {\r",
+													"    pm.test(\"Se espera que los elementos dentro de la respuesta sean objetos\", function () {\r",
+													"    \r",
+													"    pm.expect(responseJson[pm.info.iteration]).to.be.an('object');\r",
+													"  \r",
+													"});\r",
+													"}\r",
+													"\r",
+													"\r",
+													"pm.test(\"Se espera que la respuesta sea un array\", () => {\r",
+													"   \r",
+													"  pm.expect(responseJson).to.be.an(\"array\");\r",
+													"   \r",
+													"});\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{URL_CATEGORIAS}}/todas",
+											"host": [
+												"{{URL_CATEGORIAS}}"
+											],
+											"path": [
+												"todas"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Obtener categoria por id",
+							"item": [
+								{
+									"name": "Obtener categoria por id",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"const responseJson = pm.response.json();\r",
+													"\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header está presente\", () => {\r",
+													"  pm.response.to.have.header(\"Content-Type\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header es application/json\", () => {\r",
+													"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"El id está presente y es un numero\", () => {\r",
+													"   \r",
+													"    pm.expect(responseJson.id).to.be.a('number');\r",
+													"        \r",
+													"});\r",
+													"\r",
+													"pm.test(\"El ID es el mismo que el obtenido al hacer el post de la categoria previamente\", () => {\r",
+													"  pm.expect(responseJson.id).to.eql(pm.collectionVariables.get(\"IDPOST_CATEGORIA\"));\r",
+													"});\r",
+													"\r",
+													"pm.test(\"La url de la imagen es un string\", () => {\r",
+													"    \r",
+													"    pm.expect(responseJson.url_imagen).to.be.a('string');\r",
+													"    \r",
+													"});\r",
+													"\r",
+													"pm.test(\"El titulo es uno de los asignados para categorizar\", () => {\r",
+													"   \r",
+													"    pm.expect(responseJson.titulo).to.be.oneOf([\"Departamentos\", \"Hostels\", \"Hoteles\", \"Bed & Breakfast\"]);\r",
+													"     \r",
+													"});\r",
+													"\r",
+													"pm.test(\"El titulo es el mismo que el enviado al hacer el post de la categoria previamente\", () => {\r",
+													"  pm.expect(responseJson.titulo).to.eql(pm.collectionVariables.get(\"POST_HOTELES_CATEGORIA\"));\r",
+													"});\r",
+													"\r",
+													"pm.test(\"La descripcion es un string\", () => {\r",
+													"      pm.expect(responseJson.descripcion).to.be.a('string');\r",
+													"       \r",
+													"});\r",
+													"\r",
+													"pm.test(\"La descripción es el mismo que el enviado al hacer el post de la categoria previamente\", () => {\r",
+													"  pm.expect(responseJson.descripcion).to.eql(pm.collectionVariables.get(\"POST_DESCRIPCION\"));\r",
+													"});\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{URL_CATEGORIAS}}/{{IDPOST_CATEGORIA}}",
+											"host": [
+												"{{URL_CATEGORIAS}}"
+											],
+											"path": [
+												"{{IDPOST_CATEGORIA}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Obtener categoria por id exception",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"El código de status es 404\", function () {\r",
+													"    pm.response.to.have.status(404);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header está presente\", () => {\r",
+													"  pm.response.to.have.header(\"Content-Type\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Length header está presente\", () => {\r",
+													"  pm.response.to.have.header(\"Content-Length\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Body de respuesta es un texto con la descripcion del error\", function () {\r",
+													"  pm.response.to.have.body(\"No se pudo encontrar la categoria con el id indicado\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"La respuesta es un status Not Found\", () => {\r",
+													"    pm.response.to.have.status(\"Not Found\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{URL_CATEGORIAS}}/{{IDFOREXCEPTION}}",
+											"host": [
+												"{{URL_CATEGORIAS}}"
+											],
+											"path": [
+												"{{IDFOREXCEPTION}}"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Put - Modificar categoria",
+					"item": [
+						{
+							"name": "Modificar categoria OK",
+							"item": [
+								{
+									"name": "Modificar categoria",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n        \"id\": {{IDPOST_CATEGORIA}},\r\n        \"titulo\": \"Hoteles\",\r\n        \"descripcion\": \"{{PUT_DESCRIPCION}}\",\r\n        \"url_imagen\": \"https://images.unsplash.com/photo-1591088398332-8a7791972843?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374\" \r\n    }",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{URL_CATEGORIAS}}/editar",
+											"host": [
+												"{{URL_CATEGORIAS}}"
+											],
+											"path": [
+												"editar"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Modificar categoria script tests",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header está presente\", () => {\r",
+													"  pm.response.to.have.header(\"Content-Type\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header es application/json\", () => {\r",
+													"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Testear que el tipo de respuesta sea un string\", () => {\r",
+													"    const jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData).to.be.a(\"string\");\r",
+													"  \r",
+													"});\r",
+													"\r",
+													"pm.test(\"La respuesta es un status OK\", () => {\r",
+													"    pm.response.to.have.status(\"OK\");\r",
+													"});\r",
+													"\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n        \"id\": {{IDPOST2_CATEGORIA}},\r\n        \"titulo\": \"Hoteles\",\r\n        \"descripcion\": \"{{PUT_DESCRIPCION}}\",\r\n        \"url_imagen\": \"https://images.unsplash.com/photo-1591088398332-8a7791972843?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374\" \r\n    }",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{URL_CATEGORIAS}}/editar",
+											"host": [
+												"{{URL_CATEGORIAS}}"
+											],
+											"path": [
+												"editar"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Modificar categoria exception",
+							"item": [
+								{
+									"name": "Modificar categoria exception",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n        \"id\": {{IDFOREXCEPTION}},\r\n        \"titulo\": \"Hoteles\",\r\n        \"descripcion\": \"Habitaciones con baño privado, Recepción 24 Hs, Servicio de Room Service, Lavandería y Valet Parking\",\r\n        \"url_imagen\": \"https://images.unsplash.com/photo-1591088398332-8a7791972843?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374\" \r\n    }",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{URL_CATEGORIAS}}/editar",
+											"host": [
+												"{{URL_CATEGORIAS}}"
+											],
+											"path": [
+												"editar"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Modificar categoria exception script tests",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"El código de status es 404\", function () {\r",
+													"    pm.response.to.have.status(404);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header está presente\", () => {\r",
+													"  pm.response.to.have.header(\"Content-Type\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header es application/json\", () => {\r",
+													"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain;charset=UTF-8');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Length header está presente\", () => {\r",
+													"  pm.response.to.have.header(\"Content-Length\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Body de respuesta es un texto con la descripcion del error\", function () {\r",
+													"  pm.response.to.have.body(\"No se pudo encontrar la categoria para editar\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"La respuesta es un status Not Found\", () => {\r",
+													"   pm.response.to.have.status(\"Not Found\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n        \"id\": {{IDFOREXCEPTION}},\r\n        \"titulo\": \"Hoteles\",\r\n        \"descripcion\": \"Habitaciones con baño privado, Recepción 24 Hs, Servicio de Room Service, Lavandería y Valet Parking\",\r\n        \"url_imagen\": \"https://images.unsplash.com/photo-1591088398332-8a7791972843?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374\" \r\n    }",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{URL_CATEGORIAS}}/editar",
+											"host": [
+												"{{URL_CATEGORIAS}}"
+											],
+											"path": [
+												"editar"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Delete - Eliminar categoria",
+					"item": [
+						{
+							"name": "Eliminar categoria OK",
+							"item": [
+								{
+									"name": "Eliminar categoria",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{URL_CATEGORIAS}}/{{IDPOST_CATEGORIA}}",
+											"host": [
+												"{{URL_CATEGORIAS}}"
+											],
+											"path": [
+												"{{IDPOST_CATEGORIA}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Eliminar categoria script tests",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"El código de status es 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header está presente\", () => {\r",
+													"  pm.response.to.have.header(\"Content-Type\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header es application/json\", () => {\r",
+													"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Testear que el tipo de respuesta sea un string\", () => {\r",
+													"    const jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData).to.be.a(\"string\");\r",
+													"  \r",
+													"});\r",
+													"\r",
+													"pm.test(\"La respuesta es un status OK\", () => {\r",
+													"  pm.response.to.have.status(\"OK\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{URL_CATEGORIAS}}/{{IDPOST2_CATEGORIA}}",
+											"host": [
+												"{{URL_CATEGORIAS}}"
+											],
+											"path": [
+												"{{IDPOST2_CATEGORIA}}"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Eliminar categoria exception",
+							"item": [
+								{
+									"name": "Eliminar categoria exception",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{URL_CATEGORIAS}}/{{IDFOREXCEPTION}}",
+											"host": [
+												"{{URL_CATEGORIAS}}"
+											],
+											"path": [
+												"{{IDFOREXCEPTION}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Eliminar categoria exception script tests",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"El código de status es 404\", function () {\r",
+													"    pm.response.to.have.status(404);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header está presente\", () => {\r",
+													"  pm.response.to.have.header(\"Content-Type\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header es application/json\", () => {\r",
+													"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain;charset=UTF-8');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Length header está presente\", () => {\r",
+													"  pm.response.to.have.header(\"Content-Length\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Body de respuesta es un texto con la descripcion del error\", function () {\r",
+													"  pm.response.to.have.body(\"No se pudo encontrar la categoria a eliminar\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"La respuesta es un status Not Found\", () => {\r",
+													"    pm.response.to.have.status(\"Not Found\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{URL_CATEGORIAS}}/{{IDFOREXCEPTION}}",
+											"host": [
+												"{{URL_CATEGORIAS}}"
+											],
+											"path": [
+												"{{IDFOREXCEPTION}}"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "IDPOST_CATEGORIA",
+			"value": "5"
+		},
+		{
+			"key": "IDFOREXCEPTION",
+			"value": "1500",
+			"type": "string"
+		},
+		{
+			"key": "IDPOST2_CATEGORIA",
+			"value": "6",
+			"type": "string"
+		},
+		{
+			"key": "URL_CATEGORIAS",
+			"value": "http://localhost:8080/categorias",
+			"type": "string"
+		},
+		{
+			"key": "POST_HOTELES_CATEGORIA",
+			"value": "Hoteles",
+			"type": "string"
+		},
+		{
+			"key": "POST_DESCRIPCION",
+			"value": "Descripcion post",
+			"type": "string"
+		},
+		{
+			"key": "PUT_DESCRIPCION",
+			"value": "Descripcion modificada",
+			"type": "string"
+		}
+	]
+}

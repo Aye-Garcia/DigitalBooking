@@ -1,0 +1,35 @@
+.header-desktop{
+    width: 100%;
+    background-color: var(--color-base);
+    height: 100px;
+    display: flex;
+    align-items: center;
+    
+    
+}
+.header-desktop-content{
+    height: 100px;
+    width: 90%;
+    max-width: 1366px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* min-width: 1340px; */
+}
+.logo{
+    display: flex;
+    margin-left: 40px;
+    
+}
+.logo h2{
+    margin-top: 20px;
+    margin-left: 12px;
+}
+.botones-header{
+    display: flex;
+    margin-right: 40px;
+}
+.botones-header button{
+    margin-left: 10px;
+}
