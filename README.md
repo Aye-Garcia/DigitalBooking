@@ -17,7 +17,7 @@
 <img src="/backend/testing/Imagenes-Rm/mobileHome.png"><br>
 
 
-<img src="https://cdn-icons-png.flaticon.com/512/753/753244.png" width="25" height="25" align="center"> ▫ link a la página ▫
+<img src="https://cdn-icons-png.flaticon.com/512/753/753244.png" width="25" height="25" align="center"> ▫ link a la página ▫ https://digitalbooking.netlify.app
 
 ---
 
